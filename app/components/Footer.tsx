@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "../assets/logo/Rawafed logo black.png";
 
 const footerColumns = [
@@ -87,10 +88,10 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-6 border-t border-slate-200 pt-6 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-4 text-sm text-slate-600">
-            <a href="#" className="hover:text-rose-600">Terms &amp; Conditions</a>
-            <a href="#" className="hover:text-rose-600">Privacy Policy</a>
-            <a href="#" className="hover:text-rose-600">Cookies Policy</a>
-            <a href="#" className="hover:text-rose-600">Sitemap</a>
+            <Link href="/terms" className="hover:text-blue-600 transition">Terms &amp; Conditions</Link>
+            <Link href="/privacy" className="hover:text-blue-600 transition">Privacy Policy</Link>
+            <Link href="/cookies" className="hover:text-blue-600 transition">Cookies Policy</Link>
+            <Link href="/sitemap-page" className="hover:text-blue-600 transition">Sitemap</Link>
           </div>
 
           <div className="flex flex-wrap items-center gap-4">

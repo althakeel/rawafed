@@ -77,125 +77,59 @@ export function ExploreEmirates() {
           </p>
         </div>
 
-        {/* Featured Dubai Card - Large */}
-        <div className="mb-12 grid gap-6 md:grid-cols-3 lg:gap-8">
-          <Link
-            href={`/search?emirate=dubai`}
-            className="group relative h-96 overflow-hidden rounded-2xl shadow-2xl transition hover:shadow-3xl md:col-span-2"
-          >
-            <Image
-              src={emirates[0].image}
-              alt="Dubai"
-              fill
-              className="object-cover group-hover:scale-110 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            <div className="absolute inset-0 flex flex-col justify-between p-8">
-              <div>
-                <h3 className="text-5xl font-bold text-white mb-3">{emirates[0].name}</h3>
-                <p className="text-white/90 text-lg max-w-md">{emirates[0].description}</p>
-              </div>
-              <div>
-                <div className="mb-4 inline-block rounded-full bg-blue-600 px-4 py-2">
-                  <span className="font-bold text-white">{emirates[0].properties}</span>
-                  <span className="text-white/80 text-sm"> properties</span>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {emirates[0].highlights.map((highlight) => (
-                    <span
-                      key={highlight}
-                      className="inline-block rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-xs font-medium text-white"
-                    >
-                      {highlight}
-                    </span>
-                  ))}
-                </div>
-                <button className="w-full rounded-lg bg-blue-600 px-6 py-3 font-bold text-white transition hover:bg-blue-700">
-                  Explore {emirates[0].name}
-                </button>
-              </div>
-            </div>
-          </Link>
-
-          {/* Abu Dhabi Featured Card */}
-          <Link
-            href={`/search?emirate=abu-dhabi`}
-            className="group relative h-96 overflow-hidden rounded-2xl shadow-2xl transition hover:shadow-3xl"
-          >
-            <Image
-              src={emirates[1].image}
-              alt="Abu Dhabi"
-              fill
-              className="object-cover group-hover:scale-110 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            <div className="absolute inset-0 flex flex-col justify-between p-6">
-              <div className="text-right">
-                <span className="inline-block rounded-full bg-amber-500/80 px-3 py-1 text-xs font-bold text-white">FEATURED</span>
-              </div>
-              <div>
-                <h3 className="text-4xl font-bold text-white mb-2">{emirates[1].name}</h3>
-                <p className="text-white/80 text-sm mb-3">{emirates[1].description}</p>
-                <div className="mb-3 inline-block rounded-full bg-blue-600 px-3 py-1.5">
-                  <span className="font-bold text-white text-sm">{emirates[1].properties}</span>
-                </div>
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {emirates[1].highlights.slice(0, 2).map((highlight) => (
-                    <span
-                      key={highlight}
-                      className="inline-block rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-0.5 text-xs text-white"
-                    >
-                      {highlight}
-                    </span>
-                  ))}
-                </div>
-                <button className="w-full rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white text-sm transition hover:bg-blue-700">
-                  Explore
-                </button>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* Other Emirates Grid - 3 columns */}
-        <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
-          {emirates.slice(2).map((emirate) => (
+        {/* Emirates Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {emirates.map((emirate, index) => (
             <Link
               key={emirate.name}
-              href={`/search?emirate=${emirate.name.toLowerCase().replace(/\s+/g, '-')}`}
-              className="group relative h-72 overflow-hidden rounded-xl shadow-lg transition hover:shadow-2xl"
+              href={`/search?emirate=${emirate.name.toLowerCase()}`}
+              className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:shadow-lg"
             >
-              <Image
-                src={emirate.image}
-                alt={emirate.name}
-                fill
-                className="object-cover group-hover:scale-125 transition duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
-              <div className="absolute inset-0 flex flex-col justify-between p-5">
-                <div className="text-right opacity-0 group-hover:opacity-100 transition duration-300">
-                  <span className="inline-block rounded-full bg-purple-600/80 px-2.5 py-0.5 text-xs font-bold text-white">EXPLORE</span>
+              {/* Image Container */}
+              <div className="relative h-48 overflow-hidden bg-slate-200">
+                <Image
+                  src={emirate.image}
+                  alt={emirate.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-300"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition"></div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="mb-2 text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+                  {emirate.name}
+                </h3>
+                <p className="mb-4 text-sm text-slate-600">
+                  {emirate.description}
+                </p>
+
+                {/* Properties Count */}
+                <div className="mb-4 rounded-lg bg-blue-50 px-3 py-2 text-center">
+                  <span className="font-semibold text-blue-600">{emirate.properties}</span>
+                  <span className="text-xs text-slate-600"> properties listed</span>
                 </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-1.5">{emirate.name}</h3>
-                  <p className="text-white/70 text-xs mb-2 line-clamp-2">{emirate.description}</p>
-                  <div className="mb-2.5 inline-block rounded-full bg-blue-600 px-2.5 py-1">
-                    <span className="font-bold text-white text-xs">{emirate.properties}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {emirate.highlights.slice(0, 2).map((highlight) => (
+
+                {/* Highlights */}
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-slate-700 uppercase">Popular Areas:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {emirate.highlights.map((highlight) => (
                       <span
                         key={highlight}
-                        className="inline-block rounded-full bg-white/20 backdrop-blur-sm px-2 py-0.5 text-xs text-white"
+                        className="inline-block rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700"
                       >
                         {highlight}
                       </span>
                     ))}
                   </div>
-                  <button className="w-full rounded-lg bg-blue-600 px-3 py-2 font-semibold text-white text-xs transition hover:bg-blue-700">
-                    View {emirate.name}
-                  </button>
                 </div>
+
+                {/* CTA */}
+                <button className="mt-6 w-full rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white transition hover:bg-blue-700">
+                  Explore {emirate.name}
+                </button>
               </div>
             </Link>
           ))}
